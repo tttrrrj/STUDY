@@ -6,10 +6,25 @@
     <title>index</title>
   </head>
   <body>
+    <div style="
+    text-align: center;
+    background-color: blanchedalmond;
+    color: rgb(59, 155, 138);
+    "
     <p>欢迎大家来到本人自制的网页小游戏“搭讪闯关”~</p>
+    </body></div>
+    <div style="
+    text-align: center;
+    color: rgb(76, 47, 12);
+    "
     <p>请开始你的选项</p>
-<p>你的性取向是</p>
-
+     <div style="
+    text-align: center;
+    background-color: blanchedalmond;
+    <p>你的性取向是</p>
+    </div>
+    <div style="
+    text-align: center;"
 
     <a href="http://127.0.0.1:3000/.vscode/搭讪闯关 1.html">男</a>
     <a href="http://127.0.0.1:3000/.vscode/搭讪闯关 1.html">man</a>
