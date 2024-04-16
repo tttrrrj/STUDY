@@ -6,6 +6,15 @@
     <title>index</title>
   </head>
   <body>
- <a href="http://127.0.0.1:3000/.vscode/搭讪闯关.html">点击开始</a>
+    <p>欢迎大家来到本人自制的网页小游戏“搭讪闯关”~</p>
+    <p>请开始你的选项</p>
+<p>你的性取向是</p>
+
+
+    <a href="http://127.0.0.1:3000/.vscode/搭讪闯关 1.html">男</a>
+    <a href="http://127.0.0.1:3000/.vscode/搭讪闯关 1.html">man</a>
+    <a href="https://cdnkyyzxzx.njianzhan.com/?impression_id={impression_id}&exchange_id={exchange_id}&mvosr={source_id}&bannerid={bannerid}&creativeid=12387096680&vn=1&qhclickid=aadb2f5606c80c40&q=%E7%B2%BE%E7%A5%9E%E7%97%85%E8%83%BD%E6%B2%BB%E5%A5%BD%E5%90%97&keywordid=64672918459&qaid={qaid}&s=360jj01&p=js&d=02-B01&kid=20240110273559">垃圾作者，我要投诉</a>
+  
+  </div>
   </body>
 </html>
