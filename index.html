@@ -78,7 +78,7 @@
         color: white;
         text-decoration: none;
         font-size: 18px;
-        border-radius: 15px;
+        border-radius: 25px; /* 圆角效果 */
         box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5); /* 阴影效果 */
         transition: all 0.3s ease;
       }
@@ -88,6 +88,23 @@
         background-color: #ff4081;
         transform: translateY(-3px);
         box-shadow: 0 6px 12px rgba(255, 105, 180, 0.6);
+      }
+
+      /* 浪漫背景样式 */
+      .romantic-bg {
+        background: linear-gradient(135deg, #ff77a9, #ff4081); /* 粉色渐变背景 */
+        color: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.6); /* 阴影效果 */
+        margin: 20px auto;
+        width: 80%;
+      }
+
+      .romantic-bg p {
+        font-size: 20px;
+        text-align: center;
+        line-height: 1.8;
       }
     </style>
   </head>
@@ -104,19 +121,26 @@
     <div class="flower" style="left: 40%; top: 50%;"></div>
     <div class="flower" style="left: 70%; top: 20%;"></div>
 
-    <!-- 页面内容 -->
-    <div style="text-align: center; background-color: blanchedalmond; color: rgb(59, 155, 138);">
+    <!-- 欢迎内容 -->
+    <div class="romantic-bg">
       <p>欢迎大家来到本人自制的网页小游戏“搭讪闯关”~</p>
     </div>
-    
-    <div style="text-align: center; color: rgb(76, 47, 12);">
+
+    <!-- 选项内容 -->
+    <div class="romantic-bg">
       <p>请开始你的选项</p>
-      
-      <div style="text-align: center; background-color: blanchedalmond;">
-        <p>你的性取向是</p>
-      </div>
-      
-      <div class="choices" style="text-align: center;">
-        <a href="搭讪闯关 1.html">男</a>
-        <a href="搭讪闯关 1.html">man</a>
-        <a href="https://cdnkyyzxzx.njianzhan.com/?impressi
+    </div>
+
+    <div class="romantic-bg">
+      <p>你的性取向是</p>
+    </div>
+
+    <!-- 选项按钮 -->
+    <div class="choices">
+      <a href="搭讪闯关 1.html">男</a>
+      <a href="搭讪闯关 1.html">man</a>
+      <a href="https://cdnkyyzxzx.njianzhan.com/?impressi">其它</a>
+    </div>
+  </body>
+</html>
+
