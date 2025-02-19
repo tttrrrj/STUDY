@@ -3,15 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>搭讪闯关7</title>
+    <title>搭讪闯关</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background: #fff0f6;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        position: relative;
+      }
+
+      p {
+        font-size: 20px;
+        color: #6a3e8d;
+        margin: 20px 0;
+        line-height: 1.6;
+      }
+
+      .choices a {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #ff77a9;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
+        transition: all 0.3s ease;
+      }
+
+      .choices a:hover {
+        background-color: #ff4081;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 105, 180, 0.6);
+      }
+
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgba(255, 182, 193, 0.7);
+        opacity: 0.6;
+        pointer-events: none;
+        animation: bubbleMove 10s infinite ease-in-out;
+      }
+
+      @keyframes bubbleMove {
+        0% {
+          transform: scale(0.5) translateY(0);
+        }
+        50% {
+          transform: scale(1) translateY(-200px);
+        }
+        100% {
+          transform: scale(0.5) translateY(0);
+        }
+      }
+    </style>
   </head>
   <body>
+    <div class="bubble" style="width: 100px; height: 100px; left: 10%; top: 20%; animation-duration: 15s;"></div>
+    <div class="bubble" style="width: 80px; height: 80px; left: 30%; top: 60%; animation-duration: 12s;"></div>
+    <div class="bubble" style="width: 120px; height: 120px; left: 50%; top: 40%; animation-duration: 18s;"></div>
+    <div class="bubble" style="width: 90px; height: 90px; left: 70%; top: 30%; animation-duration: 14s;"></div>
+    
     <p>帅哥好感度减40</p>
     <p>帅哥一等你下车就头也不回地骑走了，你甚至没来得及问他的名字</p>
-    <div style=" text-align: center; background-color: blanchedalmond;>
-    <a href="http://127.0.0.1:3000/.vscode/搭讪闯关 2.html"></a>
     <p>达成成就：萍水相逢</p>
-    <a href="http://127.0.0.1:3000/.vscode/搭讪闯关 6.html">返回上一节点</a>
-    <a href="http://127.0.0.1:3000/.vscode/搭讪闯关.html">返回主页</a>
+    <div class="choices">
+      <a href="搭讪闯关 6.html">返回上一节点</a>
+      <a href="搭讪闯关.html">返回主页</a>
+    </div>
   </body>
 </html>
