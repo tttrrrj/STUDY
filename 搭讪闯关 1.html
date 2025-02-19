@@ -4,18 +4,116 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>搭讪闯关1</title>
+    <style>
+      /* 页面背景和基本样式 */
+      body {
+        font-family: 'Arial', sans-serif;
+        background: #fff0f6; /* 淡粉色背景 */
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      /* 标题和文本样式 */
+      p {
+        font-size: 18px;
+        color: #6a3e8d; /* 紫红色文字 */
+        text-align: center;
+        margin: 20px 0;
+        line-height: 1.6;
+      }
+
+      /* 气泡样式 */
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgba(255, 182, 193, 0.7); /* 粉色透明气泡 */
+        opacity: 0.6;
+        pointer-events: none;
+        animation: bubbleMove 10s infinite ease-in-out;
+      }
+
+      /* 气泡动画 */
+      @keyframes bubbleMove {
+        0% {
+          transform: scale(0.5) translateY(0);
+        }
+        50% {
+          transform: scale(1) translateY(-200px);
+        }
+        100% {
+          transform: scale(0.5) translateY(0);
+        }
+      }
+
+      /* 花朵装饰 */
+      .flower {
+        position: absolute;
+        background: url('https://www.pngkey.com/png/full/227-2277683_flowers-pink-flower-png-image-transparent-pink-flowers.png') no-repeat center;
+        background-size: contain;
+        width: 60px;
+        height: 60px;
+        animation: flowerMove 8s infinite ease-in-out;
+      }
+
+      /* 花朵动画 */
+      @keyframes flowerMove {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-100px) rotate(180deg);
+        }
+        100% {
+          transform: translateY(0) rotate(360deg);
+        }
+      }
+
+      /* 选项按钮样式 */
+      .choices a {
+        display: inline-block;
+        margin: 15px;
+        padding: 10px 20px;
+        background-color: #ff77a9; /* 浅粉色背景 */
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5); /* 阴影效果 */
+        transition: all 0.3s ease;
+      }
+
+      /* 鼠标悬停效果 */
+      .choices a:hover {
+        background-color: #ff4081;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 105, 180, 0.6);
+      }
+    </style>
   </head>
+
   <body>
-    <p></p>
-    <p>
-      一天赶早八的路上，你匆忙闯出围合大门，晃眼间瞟见一个长在你心巴上的男子，今天早上的早八不点名，
-    </p>
-    <p>你决定</p>
-    <div style=" text-align: center; background-color: blanchedalmond;>
-    <a href="http://127.0.0.1:3000/.vscode/搭讪闯关 2.html"></a>
-    <a href="http://127.0.0.1:3000/.vscode/搭讪闯关 2.html">A冲向帅哥</a>
-    <a href="http://127.0.0.1:3000/.vscode/搭讪闯关 12.html">B冲向单车</a>
-    <a href="http://127.0.0.1:3000/.vscode/搭讪闯关 17.html">C冲进被窝</a>
+    <!-- 浪漫气泡背景 -->
+    <div class="bubble" style="width: 100px; height: 100px; left: 10%; top: 20%; animation-duration: 15s;"></div>
+    <div class="bubble" style="width: 80px; height: 80px; left: 30%; top: 60%; animation-duration: 12s;"></div>
+    <div class="bubble" style="width: 120px; height: 120px; left: 50%; top: 40%; animation-duration: 18s;"></div>
+    <div class="bubble" style="width: 90px; height: 90px; left: 70%; top: 30%; animation-duration: 14s;"></div>
+
+    <!-- 浪漫花朵装饰 -->
+    <div class="flower" style="left: 15%; top: 10%;"></div>
+    <div class="flower" style="left: 40%; top: 50%;"></div>
+    <div class="flower" style="left: 70%; top: 20%;"></div>
+
+    <!-- 页面内容 -->
+    <div>
+      <p>一天赶早八的路上，你匆忙闯出围合大门，晃眼间瞟见一个长在你心巴上的男子，今天早上的早八不点名，</p>
+      <p>你决定</p>
+
+      <div class="choices" style="text-align: center;">
+        <a href="搭讪闯关 2.html">A. 冲向帅哥</a>
+        <a href="搭讪闯关 12.html">B. 冲向单车</a>
+        <a href="搭讪闯关 17.html">C. 冲进被窝</a>
+      </div>
     </div>
   </body>
 </html>
