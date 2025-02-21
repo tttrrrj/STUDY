@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>搭讪闯关游戏</title>
+    <title>搭讪闯关</title>
     <style>
         /* 基础样式 */
         body {
@@ -17,27 +16,20 @@
             overflow-x: hidden;
         }
 
-        /* 新版对话框样式 */
-        .dialog-container {
-            position: relative;
-            max-width: 600px;
-            margin: 40px auto;
-            perspective: 1000px;
-        }
-
-        .dialog {
+        /* 新增对话框样式 */
+        .dialog-box {
             background: white;
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+            width: 80%;
+            max-width: 600px;
+            margin: 40px auto;
             position: relative;
-            transform-origin: top center;
-            animation: dialogEntrance 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            margin-bottom: 40px;
             border: 2px solid #ff77a9;
         }
 
-        .dialog::after {
+        .dialog-box::after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -48,7 +40,7 @@
             border-color: #ff77a9 transparent transparent;
         }
 
-        .dialog p {
+        .dialog-box p {
             margin: 0;
             color: #6a3e8d;
             font-size: 18px;
@@ -56,30 +48,23 @@
             text-align: center;
         }
 
-        /* 对话框动画 */
-        @keyframes dialogEntrance {
-            0% {
-                opacity: 0;
-                transform: translateY(20px) rotateX(30deg);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) rotateX(0);
-            }
-        }
-
-        /* 选项按钮增强 */
+        /* 修正选项按钮样式 */
         .choices {
             text-align: center;
             margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
-        .choice-btn {
-            display: inline-block;
-            margin: 10px;
+        .choices a {
+            display: block;
+            width: 60%;
+            max-width: 400px;
             padding: 12px 25px;
             background: linear-gradient(135deg, #ff77a9, #ff4081);
-            color: white;
+            color: white !important;
             border-radius: 30px;
             text-decoration: none;
             font-size: 16px;
@@ -88,7 +73,7 @@
             border: 2px solid white;
         }
 
-        .choice-btn:hover {
+        .choices a:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
         }
@@ -100,6 +85,7 @@
             background: rgba(255, 182, 193, 0.3);
             animation: bubbleMove 8s infinite linear;
             pointer-events: none;
+            z-index: 1;
         }
 
         @keyframes bubbleMove {
@@ -114,7 +100,7 @@
     <div class="bubble" style="width:120px; height:120px; left:30%; top:30%"></div>
     <div class="bubble" style="width:60px; height:60px; left:70%; top:20%"></div>
 
-      <!-- 对话框 -->
+    <!-- 对话框 -->
     <div class="dialog-box">
         <p>帅哥看见冲到自己面前的你，他</p>
     </div>
@@ -122,11 +108,10 @@
     <!-- 竖排选项 -->
     <div class="choices">
         <a href="搭讪闯关 3.html">A. 无视走过</a>
-        <a href="搭讪闯关 6.html">B. 问：“你需要帮助吗？”</a>
-        <a href="搭讪闯关 9.html">C. 说：“鸭头你怎么了？（翰哥歪嘴）”</a>
+        <a href="搭讪闯关 6.html">B. 问："你需要帮助吗？"</a>
+        <a href="搭讪闯关 9.html">C. 说："鸭头你怎么了？（翰哥歪嘴）"</a>
         <a href="搭讪闯关 1.html">返回上一节点</a>
     </div>
-
 
     <script>
         // 动态创建更多气泡
@@ -146,4 +131,3 @@
     </script>
 </body>
 </html>
-
