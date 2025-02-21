@@ -14,15 +14,6 @@
         overflow: hidden;
       }
 
-      /* 标题和文本样式 */
-      p {
-        font-size: 18px;
-        color: #6a3e8d; /* 紫红色文字 */
-        text-align: center;
-        margin: 20px 0;
-        line-height: 1.6;
-      }
-
       /* 气泡样式 */
       .bubble {
         position: absolute;
@@ -90,21 +81,32 @@
         box-shadow: 0 6px 12px rgba(255, 105, 180, 0.6);
       }
 
-      /* 浪漫背景样式 */
-      .romantic-bg {
-        background: linear-gradient(135deg, #ff77a9, #ff4081); /* 粉色渐变背景 */
-        color: white;
+      /* 对话框样式 */
+      .dialog {
+        position: relative;
+        background-color: white;
+        color: #6a3e8d;
         padding: 20px;
         border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.6); /* 阴影效果 */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         margin: 20px auto;
-        width: 80%;
+        width: 60%;
+        max-width: 500px;
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.6;
       }
 
-      .romantic-bg p {
-        font-size: 20px;
-        text-align: center;
-        line-height: 1.8;
+      /* 对话框小箭头 */
+      .dialog::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 10px 10px 0;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
       }
     </style>
   </head>
@@ -121,17 +123,16 @@
     <div class="flower" style="left: 40%; top: 50%;"></div>
     <div class="flower" style="left: 70%; top: 20%;"></div>
 
-    <!-- 欢迎内容 -->
-    <div class="romantic-bg">
+    <!-- 对话框内容 -->
+    <div class="dialog">
       <p>欢迎大家来到本人自制的网页小游戏“搭讪闯关”~</p>
     </div>
 
-    <!-- 选项内容 -->
-    <div class="romantic-bg">
+    <div class="dialog">
       <p>请开始你的选项</p>
     </div>
 
-    <div class="romantic-bg">
+    <div class="dialog">
       <p>你的性取向是</p>
     </div>
 
