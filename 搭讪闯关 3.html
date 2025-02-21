@@ -5,61 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>搭讪闯关</title>
     <style>
-        /* 移除顶部边距 */
         body {
             font-family: 'Arial', sans-serif;
             background: #fff0f6;
             margin: 0;
-            padding: 0 0 120px; /* 仅保留底部padding */
+            padding: 0 0 120px;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* 对话框贴顶 */
+        /* 顶部对话框 */
         .dialog-box {
             background: #ffffff;
-            border-radius: 0 0 15px 15px; /* 顶部直角 */
-            padding: 20px 25px 25px;
-            width: 100%; /* 满宽度 */
-            max-width: none;
+            border-radius: 0 0 15px 15px;
+            padding: 20px 25px;
+            width: 90%;
+            max-width: 600px;
             margin: 0 auto;
             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
             text-align: center;
             position: relative;
             z-index: 2;
+            border: 2px solid #ff77a9;
         }
 
-        /* 选项容器调整 */
+        .dialog-box p {
+            color: #6a3e8d;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        /* 选项按钮 */
         .choices {
-            margin: 20px auto;
+            margin: 30px auto;
             width: 90%;
-            padding: 0 5%;
+            text-align: center;
         }
 
-        /* 其他原有样式保持不变 */
-        .choices a { /* 原有按钮样式 */ }
-        .fire { /* 原有火焰样式 */ }
-        .bubble, .flower { /* 原有装饰元素样式 */ }
+        .choice-btn {
+            display: block;
+            margin: 10px auto;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #ff77a9, #ff4081);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            border: 2px solid white;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .choice-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        /* 动态背景装饰 */
+        .bubble, .flower {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 182, 193, 0.3);
+            animation: bubbleMove 8s infinite linear;
+            pointer-events: none;
+        }
+
+        .flower {
+            width: 50px;
+            height: 50px;
+            background: url('flower.png') no-repeat center/contain;
+            animation: flowerRotate 5s infinite linear;
+        }
+
+        @keyframes bubbleMove {
+            0%, 100% { transform: translateY(0) scale(0.8); }
+            50% { transform: translateY(-100vh) scale(1.2); }
+        }
+
+        @keyframes flowerRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
-    <!-- 调整装饰元素位置 -->
+    <!-- 背景装饰 -->
     <div class="bubble" style="width:80px;height:80px;left:5%;top:5%"></div>
     <div class="flower" style="left:3%;top:2%"></div>
 
-    <!-- 顶置对话框 -->
+    <!-- 对话框 -->
     <div class="dialog-box">
         <p>你心中一震：好高傲冷漠的帅哥！</p>
     </div>
 
     <!-- 选项按钮 -->
     <div class="choices">
-        <a href="搭讪闯关 4.html">A把世界调成静音，聆听姐破防的声音</a>
-        <a href="搭讪闯关 5.html">B你缓缓起舞</a>
-        <a href="搭讪闯关 2.html">返回上一节点</a>
+        <a href="搭讪闯关4.html" class="choice-btn">A 把世界调成静音，聆听姐破防的声音</a>
+        <a href="搭讪闯关5.html" class="choice-btn">B 你缓缓起舞</a>
+        <a href="搭讪闯关2.html" class="choice-btn">返回上一节点</a>
     </div>
-
-    <!-- 动态火焰 -->
-    <div class="fire"></div>
 </body>
 </html>
