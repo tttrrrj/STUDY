@@ -1,78 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>搭讪闯关</title>
     <style>
-      body {
-        font-family: 'Arial', sans-serif;
-        background: #fff0f6;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        position: relative;
-      }
-
-      p {
-        font-size: 20px;
-        color: #6a3e8d;
-        margin: 20px 0;
-        line-height: 1.6;
-      }
-
-      .choices a {
-        display: inline-block;
-        margin: 10px;
-        padding: 10px 20px;
-        background-color: #ff77a9;
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
-        transition: all 0.3s ease;
-      }
-
-      .choices a:hover {
-        background-color: #ff4081;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(255, 105, 180, 0.6);
-      }
-
-      .bubble {
-        position: absolute;
-        border-radius: 50%;
-        background-color: rgba(255, 182, 193, 0.7);
-        opacity: 0.6;
-        pointer-events: none;
-        animation: bubbleMove 10s infinite ease-in-out;
-      }
-
-      @keyframes bubbleMove {
-        0% {
-          transform: scale(0.5) translateY(0);
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(150deg, #fff0f6 30%, #ffe4f3 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
         }
-        50% {
-          transform: scale(1) translateY(-200px);
+
+        /* 新增樱花飘落效果 */
+        .sakura {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #ffb6c1;
+            border-radius: 50% 50% 0 50%;
+            opacity: 0.7;
+            animation: sakuraFall 12s infinite linear;
+            filter: blur(1px);
         }
-        100% {
-          transform: scale(0.5) translateY(0);
+
+        @keyframes sakuraFall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
-      }
+
+        /* 文案增强效果 */
+        p {
+            font-size: 20px;
+            color: #6a3e8d;
+            margin: 20px 15%;
+            line-height: 1.6;
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255,105,180,0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 成就特效 */
+        p:last-of-type {
+            color: #ff4081;
+            font-weight: bold;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            50% { text-shadow: 0 0 10px #ff69b4; }
+        }
+
+        /* 选项按钮升级 */
+        .choices {
+            margin: 30px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .choices a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ff77a9, #ff4081);
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .choices a:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        /* 保留气泡动画 */
+        .bubble {
+            /* 原有气泡样式保持不变 */
+        }
     </style>
-  </head>
-  <body>
-    <div class="bubble" style="width: 100px; height: 100px; left: 10%; top: 20%; animation-duration: 15s;"></div>
-    <div class="bubble" style="width: 80px; height: 80px; left: 30%; top: 60%; animation-duration: 12s;"></div>
-    <div class="bubble" style="width: 120px; height: 120px; left: 50%; top: 40%; animation-duration: 18s;"></div>
-    <div class="bubble" style="width: 90px; height: 90px; left: 70%; top: 30%; animation-duration: 14s;"></div>
-    <p>你缓缓起舞，跳起来就发狠了,忘情了,没命了!百十个斜背响鼓的后生,如百十块被强震不断击起的石头,狂舞在你的面前。骤雨一样,是急促的鼓点；旋风一样,是飞扬的流苏；乱蛙一样,是蹦跳的脚步；火花一样,是闪射的瞳仁,斗虎一样,是强健的风姿。四川盆地上,爆出一 场多么壮阔、多么豪放、多么火烈的舞蹈哇<p/>
+</head>
+<body>
+    <!-- 樱花背景 -->
+    <div class="sakura" style="left:10%;animation-delay:0s"></div>
+    <div class="sakura" style="left:30%;animation-delay:3s"></div>
+    <div class="sakura" style="left:50%;animation-delay:6s"></div>
+    <div class="sakura" style="left:70%;animation-delay:9s"></div>
+
+    <!-- 原有气泡保留 -->
+    <div class="bubble" style="width:100px;height:100px;left:10%;top:20%;animation-duration:15s"></div>
+    <div class="bubble" style="width:80px;height:80px;left:30%;top:60%;animation-duration:12s"></div>
+    <div class="bubble" style="width:120px;height:120px;left:50%;top:40%;animation-duration:18s"></div>
+    <div class="bubble" style="width:90px;height:90px;left:70%;top:30%;animation-duration:14s"></div>
+
+    <!-- 文案部分 -->
+    <p>你缓缓起舞，跳起来就发狠了,忘情了,没命了!百十个斜背响鼓的后生,如百十块被强震不断击起的石头,狂舞在你的面前。骤雨一样,是急促的鼓点；旋风一样,是飞扬的流苏；乱蛙一样,是蹦跳的脚步；火花一样,是闪射的瞳仁,斗虎一样,是强健的风姿。四川盆地上,爆出一场多么壮阔、多么豪放、多么火烈的舞蹈哇</p>
     <p>帅哥莫名其妙地回头望了一眼,慌忙走了</p>
     <p>达成成就:世纪之舞</p>
+
+    <!-- 操作按钮 -->
     <div class="choices">
-      <a href="搭讪闯关 3.html">返回上一节点</a>
-      <a href="搭讪闯关.html">返回主页</a>
+        <a href="搭讪闯关 3.html">返回上一节点</a>
+        <a href="搭讪闯关.html">返回主页</a>
     </div>
-  </body>
+
+    <script>
+        // 自动生成樱花
+        function createSakura() {
+            setInterval(() => {
+                const sakura = document.createElement('div');
+                sakura.className = 'sakura';
+                sakura.style.left = Math.random() * 100 + '%';
+                sakura.style.animationDuration = Math.random() * 5 + 8 + 's';
+                document.body.appendChild(sakura);
+                
+                setTimeout(() => sakura.remove(), 12000);
+            }, 3000);
+        }
+        createSakura();
+    </script>
+</body>
 </html>
