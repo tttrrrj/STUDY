@@ -1,147 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>搭讪闯关</title>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搭讪闯关游戏</title>
     <style>
-      /* 页面背景和基本样式 */
-      body {
-        font-family: 'Arial', sans-serif;
-        background: #fff0f6; /* 淡粉色背景 */
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-
-      /* 气泡样式 */
-      .bubble {
-        position: absolute;
-        border-radius: 50%;
-        background-color: rgba(255, 182, 193, 0.7); /* 粉色透明气泡 */
-        opacity: 0.6;
-        pointer-events: none;
-        animation: bubbleMove 10s infinite ease-in-out;
-      }
-
-      /* 气泡动画 */
-      @keyframes bubbleMove {
-        0% {
-          transform: scale(0.5) translateY(0);
+        /* 基础样式 */
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: #fff0f6;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
-        50% {
-          transform: scale(1) translateY(-200px);
+
+        /* 新版对话框样式 */
+        .dialog-container {
+            position: relative;
+            max-width: 600px;
+            margin: 40px auto;
+            perspective: 1000px;
         }
-        100% {
-          transform: scale(0.5) translateY(0);
+
+        .dialog {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+            position: relative;
+            transform-origin: top center;
+            animation: dialogEntrance 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            margin-bottom: 40px;
+            border: 2px solid #ff77a9;
         }
-      }
 
-      /* 花朵装饰 */
-      .flower {
-        position: absolute;
-        background: url('https://www.pngkey.com/png/full/227-2277683_flowers-pink-flower-png-image-transparent-pink-flowers.png') no-repeat center;
-        background-size: contain;
-        width: 60px;
-        height: 60px;
-        animation: flowerMove 8s infinite ease-in-out;
-      }
-
-      /* 花朵动画 */
-      @keyframes flowerMove {
-        0% {
-          transform: translateY(0) rotate(0deg);
+        .dialog::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 8px 0;
+            border-style: solid;
+            border-color: #ff77a9 transparent transparent;
         }
-        50% {
-          transform: translateY(-100px) rotate(180deg);
+
+        .dialog p {
+            margin: 0;
+            color: #6a3e8d;
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: center;
         }
-        100% {
-          transform: translateY(0) rotate(360deg);
+
+        /* 对话框动画 */
+        @keyframes dialogEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) rotateX(30deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
         }
-      }
 
-      /* 选项按钮样式 */
-      .choices a {
-        display: inline-block;
-        margin: 15px;
-        padding: 10px 20px;
-        background-color: #ff77a9; /* 浅粉色背景 */
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-        border-radius: 25px; /* 圆角效果 */
-        box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5); /* 阴影效果 */
-        transition: all 0.3s ease;
-      }
+        /* 选项按钮增强 */
+        .choices {
+            text-align: center;
+            margin-top: 30px;
+        }
 
-      /* 鼠标悬停效果 */
-      .choices a:hover {
-        background-color: #ff4081;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(255, 105, 180, 0.6);
-      }
+        .choice-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #ff77a9, #ff4081);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            border: 2px solid white;
+        }
 
-      /* 对话框样式 */
-      .dialog {
-        position: relative;
-        background-color: white;
-        color: #6a3e8d;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        margin: 20px auto;
-        width: 60%;
-        max-width: 500px;
-        text-align: center;
-        font-size: 18px;
-        line-height: 1.6;
-      }
+        .choice-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+        }
 
-      /* 对话框小箭头 */
-      .dialog::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-width: 10px 10px 0;
-        border-style: solid;
-        border-color: white transparent transparent transparent;
-      }
+        /* 背景装饰 */
+        .bubble {
+            position: fixed;
+            border-radius: 50%;
+            background: rgba(255, 182, 193, 0.3);
+            animation: bubbleMove 8s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes bubbleMove {
+            0%, 100% { transform: translateY(0) scale(0.8); }
+            50% { transform: translateY(-100vh) scale(1.2); }
+        }
     </style>
-  </head>
+</head>
+<body>
+    <!-- 动态气泡背景 -->
+    <div class="bubble" style="width:80px; height:80px; left:10%; top:10%"></div>
+    <div class="bubble" style="width:120px; height:120px; left:30%; top:30%"></div>
+    <div class="bubble" style="width:60px; height:60px; left:70%; top:20%"></div>
 
-  <body>
-    <!-- 浪漫气泡背景 -->
-    <div class="bubble" style="width: 100px; height: 100px; left: 10%; top: 20%; animation-duration: 15s;"></div>
-    <div class="bubble" style="width: 80px; height: 80px; left: 30%; top: 60%; animation-duration: 12s;"></div>
-    <div class="bubble" style="width: 120px; height: 120px; left: 50%; top: 40%; animation-duration: 18s;"></div>
-    <div class="bubble" style="width: 90px; height: 90px; left: 70%; top: 30%; animation-duration: 14s;"></div>
-
-    <!-- 浪漫花朵装饰 -->
-    <div class="flower" style="left: 15%; top: 10%;"></div>
-    <div class="flower" style="left: 40%; top: 50%;"></div>
-    <div class="flower" style="left: 70%; top: 20%;"></div>
-
-    <!-- 对话框内容 -->
-    <div class="dialog">
-      <p>欢迎大家来到本人自制的网页小游戏“搭讪闯关”~</p>
+    <!-- 游戏对话框 -->
+    <div class="dialog-container">
+        <div class="dialog">
+            <p>🎉 欢迎大家来到自制网页小游戏「搭讪闯关」~</p>
+        </div>
+        
+        <div class="dialog">
+            <p>👉 请开始你的选择</p>
+        </div>
+        
+        <div class="dialog">
+            <p>❤️ 你的性取向是？</p>
+        </div>
     </div>
 
-    <div class="dialog">
-      <p>请开始你的选项</p>
-    </div>
-
-    <div class="dialog">
-      <p>你的性取向是</p>
-    </div>
-
-    <!-- 选项按钮 -->
+    <!-- 游戏选项 -->
     <div class="choices">
-      <a href="搭讪闯关 1.html">男</a>
-      <a href="搭讪闯关 1.html">man</a>
-      <a href="https://cdnkyyzxzx.njianzhan.com/?impressi">其它</a>
+        <a href="level1.html" class="choice-btn">男生</a>
+        <a href="level1.html" class="choice-btn">Man</a>
+        <a href="level1.html" class="choice-btn">垃圾游戏，我要投诉</a>
     </div>
-  </body>
-</html>
 
+    <script>
+        // 动态创建更多气泡
+        function createBubbles() {
+            const container = document.body;
+            for (let i = 0; i < 5; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.width = bubble.style.height = `${Math.random() * 60 + 40}px`;
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.top = `${Math.random() * 100}%`;
+                bubble.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                container.appendChild(bubble);
+            }
+        }
+        createBubbles();
+    </script>
+</body>
+</html>
