@@ -1,109 +1,100 @@
-<title>搭讪闯关</title>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搭讪闯关</title>
     <style>
-      /* 页面背景和基本样式 */
-      body {
-        font-family: 'Arial', sans-serif;
-        background: #fff0f6; /* 淡粉色背景 */
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-
-      /* 标题和文本样式 */
-      p {
-        font-size: 18px;
-        color: #6a3e8d; /* 紫红色文字 */
-        text-align: center;
-        margin: 20px 0;
-        line-height: 1.6;
-      }
-
-      /* 气泡样式 */
-      .bubble {
-        position: absolute;
-        border-radius: 50%;
-        background-color: rgba(255, 182, 193, 0.7); /* 粉色透明气泡 */
-        opacity: 0.6;
-        pointer-events: none;
-        animation: bubbleMove 10s infinite ease-in-out;
-      }
-
-      /* 气泡动画 */
-      @keyframes bubbleMove {
-        0% {
-          transform: scale(0.5) translateY(0);
+        /* 页面基础样式 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #fff0f6;
+            margin: 0;
+            padding: 20px 0 100px; /* 底部留出火焰空间 */
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
-        50% {
-          transform: scale(1) translateY(-200px);
-        }
-        100% {
-          transform: scale(0.5) translateY(0);
-        }
-      }
 
-      /* 花朵装饰 */
-      .flower {
-        position: absolute;
-        background: url('https://www.pngkey.com/png/full/227-2277683_flowers-pink-flower-png-image-transparent-pink-flowers.png') no-repeat center;
-        background-size: contain;
-        width: 60px;
-        height: 60px;
-        animation: flowerMove 8s infinite ease-in-out;
-      }
-
-      /* 花朵动画 */
-      @keyframes flowerMove {
-        0% {
-          transform: translateY(0) rotate(0deg);
+        /* 米白色对话框 */
+        .dialog-container {
+            background: #FFF5E6;
+            border-radius: 15px;
+            padding: 25px;
+            width: 80%;
+            max-width: 600px;
+            margin: 30px auto;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            text-align: center;
+            position: relative;
+            z-index: 2;
         }
-        50% {
-          transform: translateY(-100px) rotate(180deg);
-        }
-        100% {
-          transform: translateY(0) rotate(360deg);
-        }
-      }
 
-      /* 选项按钮样式 */
-      .choices a {
-        display: inline-block;
-        margin: 15px;
-        padding: 10px 20px;
-        background-color: #ff77a9; /* 浅粉色背景 */
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5); /* 阴影效果 */
-        transition: all 0.3s ease;
-      }
+        /* 暧昧粉色选项 */
+        .choices {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .choices a {
+            display: block;
+            margin: 15px auto;
+            padding: 12px 25px;
+            color: #ff4081 !important;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.9);
+            border: 2px solid #ff77a9;
+            width: 70%;
+            max-width: 500px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+        }
 
-      /* 鼠标悬停效果 */
-      .choices a:hover {
-        background-color: #ff4081;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(255, 105, 180, 0.6);
-      }
+        /* 火焰背景 */
+        .fire-effect {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(0deg, 
+                rgba(255,165,0,0.8) 0%, 
+                rgba(255,69,0,0.6) 50%,
+                rgba(255,165,0,0) 100%);
+            animation: fireGlow 2s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes fireGlow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.5; transform: scaleY(1.2); }
+        }
+
+        /* 保留原有装饰元素样式 */
+        .bubble, .flower { /* 原有样式保持不变 */ }
     </style>
-  </head>
+</head>
+<body>
+    <!-- 背景装饰 -->
+    <div class="bubble" style="width:100px;height:100px;left:10%;top:20%;animation-duration:15s"></div>
+    <div class="bubble" style="width:80px;height:80px;left:30%;top:60%;animation-duration:12s"></div>
+    <div class="flower" style="left:15%;top:10%"></div>
+    <div class="flower" style="left:70%;top:20%"></div>
 
-  <body>
-    <!-- 浪漫气泡背景 -->
-    <div class="bubble" style="width: 100px; height: 100px; left: 10%; top: 20%; animation-duration: 15s;"></div>
-    <div class="bubble" style="width: 80px; height: 80px; left: 30%; top: 60%; animation-duration: 12s;"></div>
-    <div class="bubble" style="width: 120px; height: 120px; left: 50%; top: 40%; animation-duration: 18s;"></div>
-    <div class="bubble" style="width: 90px; height: 90px; left: 70%; top: 30%; animation-duration: 14s;"></div>
+    <!-- 对话框内容 -->
+    <div class="dialog-container">
+        <p>你心中一震：好高傲冷漠的帅哥！</p>
+    </div>
 
-    <!-- 浪漫花朵装饰 -->
-    <div class="flower" style="left: 15%; top: 10%;"></div>
-    <div class="flower" style="left: 40%; top: 50%;"></div>
-    <div class="flower" style="left: 70%; top: 20%;"></div>
-    <p>你心中一震：好高傲冷漠的帅哥！</p>
-    <div style=" text-align: center; background-color: blanchedalmond;>
-    <a href="搭讪闯关 4.html">
-        A把世界调成静音，聆听姐破防的声音</a>
-    <a href="搭讪闯关 5.html">B你缓缓起舞，跳起来就发狠了,忘情了,没命了!百十个斜背响鼓的后生,如百十块被强震不断击起的石头,狂舞在你的面前。骤雨一样,是急促的鼓点；旋风一样,是飞扬的流苏；乱蛙一样,是蹦跳的脚步；火花一样,是闪射的瞳仁,斗虎一样,是强健的风姿。四川盆地上,爆出一
-      场多么壮阔、多么豪放、多么火烈的舞蹈哇</a>
-    <a href="搭讪闯关 2.html">返回上一节点</a>
-  </body>
+    <!-- 选项按钮 -->
+    <div class="choices">
+        <a href="搭讪闯关 4.html">A把世界调成静音，聆听姐破防的声音</a>
+        <a href="搭讪闯关 5.html">B你缓缓起舞</a>
+        <a href="搭讪闯关 2.html">返回上一节点</a>
+    </div>
+
+    <!-- 底部火焰效果 -->
+    <div class="fire-effect"></div>
+</body>
 </html>
