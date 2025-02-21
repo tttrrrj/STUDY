@@ -7,11 +7,12 @@
     <style>
       body {
         font-family: 'Arial', sans-serif;
-        background: #fff0f6; /* 淡粉色背景 */
+        background: #fff0f6;
         margin: 0;
         padding: 0;
         text-align: center;
         position: relative;
+        overflow: hidden;
       }
 
       p {
@@ -19,28 +20,29 @@
         color: #6a3e8d;
         margin: 20px 0;
         line-height: 1.6;
+        padding: 0 20px;
       }
 
       .choices a {
         display: inline-block;
         margin: 10px;
-        padding: 10px 20px;
-        background-color: #ff77a9;
+        padding: 12px 25px;
+        background: linear-gradient(135deg, #ff77a9, #ff4081);
         color: white;
         text-decoration: none;
         font-size: 18px;
-        border-radius: 15px;
+        border-radius: 25px;
         box-shadow: 0 4px 10px rgba(255, 105, 180, 0.5);
         transition: all 0.3s ease;
+        border: 2px solid white;
       }
 
       .choices a:hover {
-        background-color: #ff4081;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(255, 105, 180, 0.6);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
       }
 
-      /* 浪漫气泡背景 */
+      /* 气泡动画 */
       .bubble {
         position: absolute;
         border-radius: 50%;
@@ -51,25 +53,46 @@
       }
 
       @keyframes bubbleMove {
-        0% {
-          transform: scale(0.5) translateY(0);
-        }
-        50% {
-          transform: scale(1) translateY(-200px);
-        }
-        100% {
-          transform: scale(0.5) translateY(0);
-        }
+        0% { transform: scale(0.5) translateY(0); }
+        50% { transform: scale(1) translateY(-200px); }
+        100% { transform: scale(0.5) translateY(0); }
+      }
+
+      /* 新增花朵样式 */
+      .flower {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: url('https://www.pngkey.com/png/full/227-2277683_flowers-pink-flower-png-image-transparent-pink-flowers.png') no-repeat center;
+        background-size: contain;
+        animation: flowerFloat 8s infinite linear;
+        opacity: 0.8;
+      }
+
+      @keyframes flowerFloat {
+        0% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-100px) rotate(180deg); }
+        100% { transform: translateY(0) rotate(360deg); }
       }
     </style>
   </head>
   <body>
+    <!-- 背景元素 -->
     <div class="bubble" style="width: 100px; height: 100px; left: 10%; top: 20%; animation-duration: 15s;"></div>
     <div class="bubble" style="width: 80px; height: 80px; left: 30%; top: 60%; animation-duration: 12s;"></div>
     <div class="bubble" style="width: 120px; height: 120px; left: 50%; top: 40%; animation-duration: 18s;"></div>
     <div class="bubble" style="width: 90px; height: 90px; left: 70%; top: 30%; animation-duration: 14s;"></div>
     
+    <!-- 新增花朵 -->
+    <div class="flower" style="left:15%; top:10%; animation-delay:-2s"></div>
+    <div class="flower" style="left:30%; top:30%; width:50px; height:50px"></div>
+    <div class="flower" style="left:70%; top:20%; animation-duration:10s"></div>
+    <div class="flower" style="left:85%; top:40%"></div>
+
+    <!-- 剧情文本 -->
     <p>帅哥看见冲到自己面前的你，他</p>
+    
+    <!-- 选项按钮 -->
     <div class="choices">
       <a href="搭讪闯关 3.html">A. 无视走过</a>
       <a href="搭讪闯关 6.html">B. 问：“你需要帮助吗？”</a>
